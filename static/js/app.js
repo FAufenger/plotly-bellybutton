@@ -1,23 +1,47 @@
 // Creating function for Data plotting (Bar, gauge, bubble)
 //function getPlot(id) {
-
+id = "940"
     // getting data from the json file
     d3.json("./Resources/samples.json").then((data)=> {
         console.log(data);
    
     
         ///////////////// bar ////////////////
-        var sample = data.samples.filter(item => item.sample.toString() === id)[0];
-        console.log(sample);
-        //sample_values
-
+        // Find and filter sample secctio of sample data by id- will use with drop dowm menu
+        // to string??
+        var selectedSample = data.samples.filter(item => item.id === id)[0];
+        console.log(`Id Selected: ${id}`)
+        console.log(selectedSample);
+        
+        // get only top 10 sample values to plot and reverse for the plotly
+        // reverse??
+        var sampleValues = selectedSample.sample_values.slice(0, 10);
+        console.log(`Selected sample: ${sampleValues}`)
+        
         //otu_ids
-        
+        var otuIds = selectedSample.otu_ids.slice(0, 10);
+        console.log(` OTU Id: ${otuIds}`)
+        // Add OTU to value for chart visualiation 
+    
         // otu_labels
-        
+        var otuLabels = selectedSample.otu_labels.slice(0, 10);
+        console.log(`OTU Labels: ${otuLabels}`)
 
-        // // create data variable
-        // var data1 = [trace];
+        // trace
+        var trace1 = {
+            type: "scatter",
+            mode: "lines",
+            name: name,
+            x: dates,
+            y: closingPrices,
+            line: {
+              color: "#17BECF"
+            }
+          };
+      
+
+        // create data variable
+        var data1 = [trace1];
         
         // // create layout variable to set plots layout
         // var layout = {
