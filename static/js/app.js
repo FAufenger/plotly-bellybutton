@@ -105,7 +105,13 @@ d3.json("./Resources/samples.json").then((data) => {
     var selectedSample2 = data.metadata.filter(item => item.id.toString() === id)[0];
     console.log(selectedSample2);
     // Set drop down menu to selected data
-    var demoGraph = d3.select("#sample-metadata");
+    var demoGraphic = d3.select("#sample-metadata");
+    // Empty the demographic info panel each time before getting new id info
+    demoGraphic.html("");
+    // Demographic data for the id and append the info to the panel
+    Object.entries(selectedSample2).forEach((key) => {   
+            demoGraphic.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
+    });
 
 });
 
