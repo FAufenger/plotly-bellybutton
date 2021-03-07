@@ -22,35 +22,38 @@ id = "940"
         var otuIds = selectedSample.otu_ids.slice(0, 10);
         console.log(` OTU Id: ${otuIds}`)
         // Add OTU to value for chart visualiation 
-    
+        otuIdWord = otuIds.map(x => "OTU " + x)
+
         // otu_labels
         var otuLabels = selectedSample.otu_labels.slice(0, 10);
         console.log(`OTU Labels: ${otuLabels}`)
 
         // trace
         var trace1 = {
-            type: "scatter",
-            mode: "lines",
-            name: name,
-            x: dates,
-            y: closingPrices,
-            line: {
-              color: "#17BECF"
-            }
-          };
+            type: "bar",
+            x: sampleValues,
+            y: otuIdWord,
+            orientation: "h"
+        };
       
 
         // create data variable
         var data1 = [trace1];
         
-        // // create layout variable to set plots layout
-        // var layout = {
-        //     title: ""
+        // create layout variable to set plots layout
+        var layout1 = {
+            title: "Top 10 OTU IDs for selected ID",
+            yaxis: {},
+            margin: {
+                l: 100,
+                r: 100,
+                t: 100,
+                b:  100
+            }
+        };
 
-        // };
-
-        // // create the bar plot
-        // Plotly.newPlot("bar", data1, layout1);
+        // create the bar plot
+        Plotly.newPlot("bar", data1, layout1);
 
         /////////// bubble ////////////
 
