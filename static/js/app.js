@@ -6,7 +6,6 @@ d3.json("./Resources/samples.json").then((data) => {
     console.log(data);
 
 
-    ///////////////// bar ////////////////
     // Find and filter sample secctio of sample data by id- will use with drop dowm menu
     // to string??
     var selectedSample = data.samples.filter(item => item.id === id)[0];
@@ -27,6 +26,8 @@ d3.json("./Resources/samples.json").then((data) => {
     var otuLabels = selectedSample.otu_labels.slice(0, 10).reverse();
     console.log(`OTU Labels: ${otuLabels}`);
 
+    ///////////////// bar ////////////////
+    // Bar chart with only top ten OTU
     // trace
     var trace1 = {
         type: "bar",
@@ -42,13 +43,13 @@ d3.json("./Resources/samples.json").then((data) => {
 
     // create layout variable to set plots layout
     var layout1 = {
-        title: "Top 10 OTU IDs",
+        title: "Top 10 Operational Taxonomic Units",
         yaxis: {},
         margin: {
             l: 100,
             r: 100,
             t: 100,
-            b: 100
+            b: 20
         }
     };
 
@@ -103,14 +104,16 @@ d3.json("./Resources/samples.json").then((data) => {
 d3.json("./Resources/samples.json").then((data) => {
     // Filter on selected id
     var selectedSample2 = data.metadata.filter(item => item.id.toString() === id)[0];
+    // Check
+    console.log(`Demographic Info:`)
     console.log(selectedSample2);
     // Set drop down menu to selected data
     var demoGraphic = d3.select("#sample-metadata");
     // Empty the demographic info panel each time before getting new id info
     demoGraphic.html("");
     // Demographic data for the id and append the info to the panel
-    Object.entries(selectedSample2).forEach((key) => {   
-            demoGraphic.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
+    Object.entries(selectedSample2).forEach((idInfo) => {   
+            demoGraphic.append("p").text(`${idInfo[0].toUpperCase()} : ${idInfo[1]} \n`);    
     });
 
 });
@@ -118,8 +121,16 @@ d3.json("./Resources/samples.json").then((data) => {
 // Event change function
 
 
-// init Function
-
+// Initialization Function
+var dropdown = d3.select("#selDataset");
+// Read in data set 
+d3.json("./Resources/samples.json").then((data) => {
+    // // Check
+    //console.log(data)
+    data.names.forEach(id => {
+        dropdown.append("option").text(id).property("value")
+    });
+});
 // function init() {
 
 //     getPlot(id);
