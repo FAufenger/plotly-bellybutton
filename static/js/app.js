@@ -47,7 +47,7 @@ function getPlots(id) {
             yaxis: {},
             margin: {
                 l: 100,
-                r: 100,
+                r: 75,
                 t: 100,
                 b: 25
             }
@@ -70,9 +70,10 @@ function getPlots(id) {
             mode: "markers",
             marker: {
                 size: sampleValuesAll,
-                color: otuIdsAll, 
+                color: otuIdsAll,
+                colorscale: [[0, 'yellow'], [1, 'red']],
                 symbol: "circle",
-                opacity: 0.85
+                opacity: 0.7
             },
             text: otuLabelsAll
         };
