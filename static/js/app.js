@@ -89,15 +89,8 @@ function getPlots(id) {
 
         // create the bar plot
         Plotly.newPlot("bubble", data2, layout2);
-
-
-        ////////// gague //////////////
-
-        // // create the bar plot
-        // Plotly.newPlot("gauge", data3, layout3);
-
-    });
-}
+    }
+)}
 
 function getDemoGraphic(id) {
     // Demographic data
@@ -117,8 +110,56 @@ function getDemoGraphic(id) {
             .text(`${idInfo[0].toUpperCase()} : ${idInfo[1]} \n`);
         });
 
+    ////////// gague //////////////
+    
+    var washFrequency = selectedSample2.wfreq;
+    console.log(`Wash Frequency: ${washFrequency}`);
+    
+    var data3 = [{
+        domain: { x: [0, 1], y: [0, 1] },
+        value: washFrequency,
+        title: '<b>Belly Button Washing Frequency</b> <br> Scrubs per Week',
+        type: "indicator",
+        mode: "gauge+number",
+        delta: { reference: 400 },
+        gauge: {
+            axis: { range: [0, 9], tickwidth: 1, tickcolor: "#800020" },
+            bgcolor: "white",
+            borderwidth: 2,
+            bordercolor: "transparent",
+            steps: [
+                { range: [0, 1], color: "#D7DBDD" },
+                { range: [1, 2], color: "#CACFD2" },
+                { range: [2, 3], color: "#EAFAF1" },
+                { range: [3, 4], color: "#D4EFDF" },
+                { range: [4, 5], color: "#A9DFBF" },
+                { range: [5, 6], color: "#7DCEA0" },
+                { range: [6, 7], color: "#52BE80" },
+                { range: [7, 8], color: "#27AE60" },
+                { range: [8, 9], color: "#229954" }
+            ]
+        }
+    }];
+    var layout3 = {
+        width: 600,
+        height: 300,
+        margin: {
+            t: 100,
+            r: 0,
+            l: 0,
+            b: 25
+        },
+        font: {
+            color: "black",
+            family: "Arial" }
+    };
+    // create the bar plot
+    Plotly.newPlot("gauge", data3, layout3);
     });
 }
+
+
+
 // Event change function - connected to html onchange ability
 function optionChanged(id) {
     getPlots(id);
