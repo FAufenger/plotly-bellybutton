@@ -121,12 +121,14 @@ function getDemoGraphic(id) {
         var data3 = [{
             domain: { x: [0, 1], y: [0, 1] },
             value: washFrequency,
-            title: '<b>Belly Button Washing Frequency</b> <br> Scrubs per Week',
+            title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
+                    font: { size: 18} },
             type: "indicator",
             mode: "gauge+number",
             delta: {},
             gauge: {
                 axis: { range: [0, 9], tickwidth: 1, tickcolor: "#fafafa" },
+                bar: {color: '65fe08'},
                 bgcolor: "white",
                 bordercolor: "transparent",
                 steps: [
@@ -152,7 +154,7 @@ function getDemoGraphic(id) {
                 b: 0
             },
             font: {
-                color: "black",
+                color: "#203000",
                 family: "Arial"
             }
         };
