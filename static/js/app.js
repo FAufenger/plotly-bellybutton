@@ -127,11 +127,11 @@ function getDemoGraphic(id) {
             textinfo: "text",
             textposition: "inside",
             values: [360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11],
-            text: ["NA","0","1","2","3","4","5","6","7","8","9+"],
+            text: ["NA","0","1","2","3","4","5","6","7","8","9"],
             hoverinfo: "skip",
             marker: { 
                 colors: ["yellow", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
-                labels: ["","0", "1", "2", "3","4","5","6","7","8","9+"],
+                labels: ["","0", "1", "2", "3","4","5","6","7","8","9"],
                 hoverinfo: "skip"
             },
             title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
@@ -154,39 +154,51 @@ function getDemoGraphic(id) {
         var xOne = 0.41;
         var yOne = 0.27;
 
-        if (washFrequency === 0) {
-            var xOne= 0.28;
-            var yOne= 0.34;
-        } else if (washFrequency === 1) {
-            var xOne= 0.20;
-            var yOne= 0.46;
-        } else if (washFrequency === 2) {  
-            var xOne= 0.22;
-            var yOne= 0.59;
-        } else if (washFrequency === 3) {
-            var xOne= 0.34;
-            var yOne= 0.71; 
-        } else if (washFrequency === 4) {
-            var xOne= 0.50;
-            var yOne= 0.74;
-        } else if (washFrequency === 5) {
-            var xOne= 0.66;
-            var yOne= 0.70; 
-        } else if (washFrequency === 6) {
-            var xOne= 0.79;
-            var yOne =0.59; 
-        } else if (washFrequency === 7) {
-            var xOne= 0.80;
-            var yOne= 0.46; 
-        } else if (washFrequency === 8) {
-            var xOne= 0.73;
-            var yOne= 0.34; 
-        } else if (washFrequency === 9) {
-            var xOne= 0.59;
-            var yOne= 0.27;
-        } else {
-            var xOne = 0.41;
-            var yOne= 0.27;
+        switch (washFrequency) {
+            case 0:
+                var xOne= 0.28;
+                var yOne= 0.34;
+                break;
+            case 1:
+                var xOne= 0.20;
+                var yOne= 0.46;
+                break;
+            case 2:  
+                var xOne= 0.22;
+                var yOne= 0.59;
+                break;
+            case 3:
+                var xOne= 0.34;
+                var yOne= 0.70;
+                break; 
+            case 4:
+                var xOne= 0.50;
+                var yOne= 0.74;
+                break;
+            case 5:
+                var xOne= 0.66;
+                var yOne= 0.70;
+                break; 
+            case 6:
+                var xOne= 0.79;
+                var yOne =0.59;
+                break; 
+            case 7:
+                var xOne= 0.80;
+                var yOne= 0.46;
+                break; 
+            case 8:
+                var xOne= 0.73;
+                var yOne= 0.34;
+                break; 
+            case 9:
+                var xOne= 0.59;
+                var yOne= 0.27;
+                break;
+            default: 
+                var xOne = 0.41;
+                var yOne= 0.27;
+                break;
         };
            
         
@@ -208,7 +220,7 @@ function getDemoGraphic(id) {
                 y1: yOne,
                 line: {
                     color: 'black',
-                    width: 6
+                    width: 8
                 }
             }],
             xaxis: {zeroline:false, 
