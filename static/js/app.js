@@ -3,14 +3,14 @@ function getPlots(id) {
 
     // getting data from the json file
     d3.json("./Resources/samples.json").then((data) => {
-        console.log(data);
+        //console.log(data);
 
 
         // Find and filter sample secctio of sample data by id- will use with drop dowm menu
         // to string??
         var selectedSample = data.samples.filter(item => item.id === id)[0];
-        console.log(`Id Selected: ${id}`);
-        console.log(selectedSample);
+        //console.log(`Id Selected: ${id}`);
+        //console.log(selectedSample);
 
         // get only top 10 sample values to plot and reverse for the plotly
         var sampleValues = selectedSample.sample_values.slice(0, 10).reverse();
@@ -24,7 +24,7 @@ function getPlots(id) {
 
         // otu_labels
         var otuLabels = selectedSample.otu_labels.slice(0, 10).reverse();
-        console.log(`OTU Labels: ${otuLabels}`);
+        //console.log(`OTU Labels: ${otuLabels}`);
 
         ///////////////// bar ////////////////
         // Bar chart with only top ten OTU
@@ -101,9 +101,9 @@ function getDemoGraphic(id) {
     d3.json("./Resources/samples.json").then((data) => {
         // Filter on selected id
         var selectedSample2 = data.metadata.filter(item => item.id.toString() === id)[0];
-        // Check
-        console.log(`Demographic Info:`)
-        console.log(selectedSample2);
+        // // Check
+        //console.log(`Demographic Info:`)
+        //console.log(selectedSample2);
         // Set drop down menu to selected data
         var demoGraphic = d3.select("#sample-metadata");
         // Empty the demographic info panel each time before getting new id info
@@ -116,7 +116,7 @@ function getDemoGraphic(id) {
 
         ////////// pie with needle //////////////
         var washFrequency = selectedSample2.wfreq;
-        console.log(`Wash Frequency: ${washFrequency}`);
+        //console.log(`Wash Frequency: ${washFrequency}`);
 
         switch (washFrequency) {
             case 0:
@@ -220,18 +220,20 @@ function getDemoGraphic(id) {
                     width: 8
                 }
             }],
-            xaxis: {zeroline:false, 
+            xaxis: {
+                zeroline:false, 
                 showticklabels:false,
                 showgrid: false, 
                 range: [-1, 1],
                 fixedrange: true
               },
-            yaxis: {zeroline:false, 
-                    showticklabels:false,
-                    showgrid: false, 
-                    range: [-1, 1],
-                    fixedrange: true
-                },
+            yaxis: {
+                zeroline:false, 
+                showticklabels:false,
+                showgrid: false, 
+                range: [-1, 1],
+                fixedrange: true
+            },
             font: {
                 color: "#203000",
                 family: "Arial",
