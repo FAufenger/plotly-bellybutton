@@ -119,18 +119,17 @@ function getDemoGraphic(id) {
         console.log(`Wash Frequency: ${washFrequency}`);
 
         var data3 = [{
-            domain: { x: [-1, 1], y: [0, 1] },
             type: "pie",
             showlegend: false,
             hole: 0.5,
-            rotation: 0,
+            rotation: 90,
             direction: "clockwise",
             textinfo: "text",
             textposition: "inside",
             values: [180, 180/10, 18,18,18,18,18,18,18,18,18],
             text: ["", "0","1","2","3","4","5","6","7","8","9+"],
             marker: { 
-                colors: ["#fafafa", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
+                colors: ["white", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
                 labels: ["","0", "1", "2", "3","4","5","6","7","8","9+"],
                 hoverinfo: "label"
             },
@@ -138,23 +137,23 @@ function getDemoGraphic(id) {
                     font: { size: 18} },
             
         }];
-        var layout3 = {
-            shapes:[{
-                type: 'path',
-                path: path,
-                fillcolor: '#850000',
-                line: {color: '#850000'}
-            }],
-            xaxis: {},
-            yaxis: {},
-            font: {
-                color: "#203000",
-                family: "Arial"
-            }
-        };
+        // var layout3 = {
+        //     shapes:[{
+        //         type: 'path',
+        //         path: path,
+        //         fillcolor: '#850000',
+        //         line: {color: '#850000'}
+        //     }],
+        //     xaxis: {},
+        //     yaxis: {},
+        //     font: {
+        //         color: "#203000",
+        //         family: "Arial"
+        //     }
+        // };
 
         // create the indicator plot
-        Plotly.newPlot("gauge", [data3, dot], layout3); 
+        Plotly.newPlot("gauge", data3); 
     });
 
     
