@@ -14,7 +14,7 @@ function getPlots(id) {
 
         // get only top 10 sample values to plot and reverse for the plotly
         var sampleValues = selectedSample.sample_values.slice(0, 10).reverse();
-        console.log(`Selected sample: ${sampleValues}`);
+        //console.log(`Selected sample: ${sampleValues}`);
 
         //otu_ids
         var otuIds = selectedSample.otu_ids.slice(0, 10).reverse();
@@ -216,7 +216,7 @@ function getDemoGraphic(id) {
         // create the indicator plot
         Plotly.newPlot("gauge", data3, layout3); 
     });
-
+        // Gauge plot belwo works! but went in favor of above pie.line chart 
          /* ////////// gague //////////////
         var washFrequency = selectedSample2.wfreq;
         console.log(`Wash Frequency: ${washFrequency}`);
@@ -250,12 +250,7 @@ function getDemoGraphic(id) {
         var layout3 = {
             width: 400,
             height: 500,
-            margin: {
-                t: 0,
-                r: 0,
-                l: 0,
-                b: 0
-            },
+            margin: { t: 0, r: 0, l: 0, b: 0 },
             font: {
                 color: "#203000",
                 family: "Arial"
