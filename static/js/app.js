@@ -121,39 +121,70 @@ function getDemoGraphic(id) {
         var data3 = [{
             type: "pie",
             showlegend: false,
-            hole: 0.5,
-            rotation: 90,
+            hole: 0.6,
+            rotation: 180,
             direction: "clockwise",
             textinfo: "text",
             textposition: "inside",
-            values: [180, 180/10, 18,18,18,18,18,18,18,18,18],
-            text: ["", "0","1","2","3","4","5","6","7","8","9+"],
+            values: [360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11],
+            text: ["NA","0","1","2","3","4","5","6","7","8","9+"],
+            hoverinfo: "skip",
             marker: { 
-                colors: ["white", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
+                colors: ["yellow", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
                 labels: ["","0", "1", "2", "3","4","5","6","7","8","9+"],
-                hoverinfo: "label"
+                hoverinfo: "skip"
             },
             title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
                     font: { size: 18} },
             
         }];
-        // var layout3 = {
-        //     shapes:[{
-        //         type: 'path',
-        //         path: path,
-        //         fillcolor: '#850000',
-        //         line: {color: '#850000'}
-        //     }],
-        //     xaxis: {},
-        //     yaxis: {},
-        //     font: {
-        //         color: "#203000",
-        //         family: "Arial"
-        //     }
-        // };
+
+        var center = {
+            type: "scatter", 
+            x: [0],
+            y: [0],
+            marker :{
+                size: 20,
+                color: "black"
+            },
+            showlegdend: false,
+            hoverinfo: "skip"
+        }
+        var layout3 = {
+            width: 400,
+            height: 500,
+            margin: {
+                t: 0,
+                r: 0,
+                l: 0,
+                b: 0
+            },
+            // shapes:[{
+            //     type: 'path',
+            //     path: path,
+            //     fillcolor: '#850000',
+            //     line: {color: '#850000'}
+            // }],
+            xaxis: {zeroline:false, 
+                showticklabels:false,
+                showgrid: false, 
+                range: [-1, 1],
+                fixedrange: true
+              },
+            yaxis: {zeroline:false, 
+                    showticklabels:false,
+                    showgrid: false, 
+                    range: [-1, 1],
+                    fixedrange: true
+                },
+            font: {
+                color: "#203000",
+                family: "Arial"
+            }
+        };
 
         // create the indicator plot
-        Plotly.newPlot("gauge", data3); 
+        Plotly.newPlot("gauge", [data3, center], layout3); 
     });
 
     
