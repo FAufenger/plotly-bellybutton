@@ -71,9 +71,9 @@ function getPlots(id) {
             marker: {
                 size: sampleValuesAll,
                 color: otuIdsAll,
-                colorscale: [[0, 'yellow'], [1, 'red']],
+                colorscale: [[0, '#f9c802'], [0.33, '#03ac13'], [0.67, '#016064'], [1, '#300038']],
                 symbol: "circle",
-                opacity: 0.7
+                opacity: 0.65
             },
             text: otuLabelsAll
         };
@@ -117,42 +117,6 @@ function getDemoGraphic(id) {
         ////////// pie with needle //////////////
         var washFrequency = selectedSample2.wfreq;
         console.log(`Wash Frequency: ${washFrequency}`);
-
-        var data3 = [{
-            type: "pie",
-            showlegend: false,
-            hole: 0.6,
-            rotation: 180,
-            direction: "clockwise",
-            textinfo: "text",
-            textposition: "inside",
-            values: [360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11],
-            text: ["NA","0","1","2","3","4","5","6","7","8","9"],
-            hoverinfo: "skip",
-            marker: { 
-                colors: ["yellow", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
-                labels: ["NA","0", "1", "2", "3","4","5","6","7","8","9"],
-                hoverinfo: "skip"
-            },
-            title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
-                    font: { size: 18} },
-            
-        }];
-        // // Tied to have a center dot to make pointer look nicer
-        // var center = {
-        //     type: "scatter", 
-        //     x: [0],
-        //     y: [0],
-        //     marker :{
-        //         size: 20,
-        //         color: "black"
-        //     },
-        //     showlegdend: false,
-        //     hoverinfo: "skip"
-        // };
-
-        var xOne = 0.41;
-        var yOne = 0.27;
 
         switch (washFrequency) {
             case 0:
@@ -200,8 +164,41 @@ function getDemoGraphic(id) {
                 var yOne= 0.27;
                 break;
         };
-           
-        
+
+        var data3 = [{
+            type: "pie",
+            showlegend: false,
+            hole: 0.6,
+            rotation: 180,
+            direction: "clockwise",
+            textinfo: "text",
+            textposition: "inside",
+            values: [360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11],
+            text: ["NA","0","1","2","3","4","5","6","7","8","9"],
+            hoverinfo: "skip",
+            marker: { 
+                colors: ["#ffd300", "#d21404", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
+                labels: ["NA","0", "1", "2", "3","4","5","6","7","8","9"],
+                hoverinfo: "skip"
+            },
+            title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
+                    font: { size: 18} },
+            
+        }];
+              
+        // // Tied to have a center dot to make pointer look nicer
+        // var center = {
+        //     type: "scatter", 
+        //     x: [0],
+        //     y: [0],
+        //     marker :{
+        //         size: 20,
+        //         color: "black"
+        //     },
+        //     showlegdend: false,
+        //     hoverinfo: "skip"
+        // };
+
         var layout3 = {
             width: 400,
             height: 500,
