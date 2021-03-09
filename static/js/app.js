@@ -128,17 +128,18 @@ function getDemoGraphic(id) {
             textposition: "inside",
             values: [360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11],
             text: ["NA","0","1","2","3","4","5","6","7","8","9"],
+            font:{ size: 20},
             hoverinfo: "skip",
             marker: { 
                 colors: ["yellow", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
-                labels: ["","0", "1", "2", "3","4","5","6","7","8","9"],
+                labels: ["NA","0", "1", "2", "3","4","5","6","7","8","9"],
                 hoverinfo: "skip"
             },
             title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
                     font: { size: 18} },
             
         }];
-
+        // // Tied to have a center dot to make pointer look nicer
         // var center = {
         //     type: "scatter", 
         //     x: [0],
@@ -244,8 +245,55 @@ function getDemoGraphic(id) {
         // create the indicator plot
         Plotly.newPlot("gauge", data3, layout3); 
     });
-
     
+         /* ////////// gague //////////////
+        var washFrequency = selectedSample2.wfreq;
+        console.log(`Wash Frequency: ${washFrequency}`);
+
+        var data3 = [{
+            domain: { x: [0, 1], y: [0, 1] },
+            value: washFrequency,
+            title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
+                    font: { size: 18} },
+            type: "indicator",
+            mode: "gauge+number",
+            delta: {},
+            gauge: {
+                axis: { range: [0, 9], tickwidth: 1, tickcolor: "#fafafa" },
+                bar: {color: '65fe08'},
+                bgcolor: "white",
+                bordercolor: "transparent",
+                steps: [
+                    { range: [0, 1], color: "#a0d080" },
+                    { range: [1, 2], color: "#90c070" },
+                    { range: [2, 3], color: "#80b060" },
+                    { range: [3, 4], color: "#70a050" },
+                    { range: [4, 5], color: "#609040" },
+                    { range: [5, 6], color: "#508030" },
+                    { range: [6, 7], color: "#407030" },
+                    { range: [7, 8], color: "#306010" },
+                    { range: [8, 9], color: "#203000" }
+                ]
+            }
+        }];
+        var layout3 = {
+            width: 400,
+            height: 500,
+            margin: {
+                t: 0,
+                r: 0,
+                l: 0,
+                b: 0
+            },
+            font: {
+                color: "#203000",
+                family: "Arial"
+            }
+        };
+
+        // create the bar plot
+        Plotly.newPlot("gauge", data3, layout3);
+    }); */    
 }
 
 
