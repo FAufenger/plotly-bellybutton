@@ -18,7 +18,8 @@ function getPlots(id) {
 
         //otu_ids
         var otuIds = selectedSample.otu_ids.slice(0, 10).reverse();
-        console.log(` OTU Id: ${otuIds}`);
+        //console.log(` OTU Id: ${otuIds}`);
+        
         // Add OTU to value for chart visualiation 
         otuIdWord = otuIds.map(x => "OTU " + x);
 
@@ -113,6 +114,7 @@ function getDemoGraphic(id) {
         ////////// pie with needle //////////////
                 
         // // Tied to have a center dot to make pointer look nicer
+        // // Difficulty came when overlapping the two plots
         // var center = {
         //     type: "scatter", 
         //     x: [0],
