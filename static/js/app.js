@@ -128,7 +128,6 @@ function getDemoGraphic(id) {
             textposition: "inside",
             values: [360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11,360/11],
             text: ["NA","0","1","2","3","4","5","6","7","8","9"],
-            font:{ size: 20},
             hoverinfo: "skip",
             marker: { 
                 colors: ["yellow", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
@@ -238,14 +237,15 @@ function getDemoGraphic(id) {
                 },
             font: {
                 color: "#203000",
-                family: "Arial"
+                family: "Arial",
+                size: 20
             }
         };
 
         // create the indicator plot
         Plotly.newPlot("gauge", data3, layout3); 
     });
-    
+
          /* ////////// gague //////////////
         var washFrequency = selectedSample2.wfreq;
         console.log(`Wash Frequency: ${washFrequency}`);
