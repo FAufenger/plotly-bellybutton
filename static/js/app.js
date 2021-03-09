@@ -139,32 +139,78 @@ function getDemoGraphic(id) {
             
         }];
 
-        var center = {
-            type: "scatter", 
-            x: [0],
-            y: [0],
-            marker :{
-                size: 20,
-                color: "black"
-            },
-            showlegdend: false,
-            hoverinfo: "skip"
-        }
+        // var center = {
+        //     type: "scatter", 
+        //     x: [0],
+        //     y: [0],
+        //     marker :{
+        //         size: 20,
+        //         color: "black"
+        //     },
+        //     showlegdend: false,
+        //     hoverinfo: "skip"
+        // };
+
+        var xOne = 0.41;
+        var yOne = 0.27;
+
+        if (washFrequency === 0) {
+            var xOne= 0.28;
+            var yOne= 0.34;
+        } else if (washFrequency === 1) {
+            var xOne= 0.20;
+            var yOne= 0.46;
+        } else if (washFrequency === 2) {  
+            var xOne= 0.22;
+            var yOne= 0.59;
+        } else if (washFrequency === 3) {
+            var xOne= 0.34;
+            var yOne= 0.71; 
+        } else if (washFrequency === 4) {
+            var xOne= 0.50;
+            var yOne= 0.74;
+        } else if (washFrequency === 5) {
+            var xOne= 0.66;
+            var yOne= 0.70; 
+        } else if (washFrequency === 6) {
+            var xOne= 0.79;
+            var yOne =0.59; 
+        } else if (washFrequency === 7) {
+            var xOne= 0.80;
+            var yOne= 0.46; 
+        } else if (washFrequency === 8) {
+            var xOne= 0.73;
+            var yOne= 0.34; 
+        } else if (washFrequency === 9) {
+            var xOne= 0.59;
+            var yOne= 0.27;
+        } else {
+            var xOne = 0.41;
+            var yOne= 0.27;
+        };
+           
+        
         var layout3 = {
             width: 400,
             height: 500,
             margin: {
                 t: 0,
                 r: 0,
-                l: 0,
+                l: 5,
                 b: 0
             },
-            // shapes:[{
-            //     type: 'path',
-            //     path: path,
-            //     fillcolor: '#850000',
-            //     line: {color: '#850000'}
-            // }],
+            shapes:[{
+                type: 'line',
+                //path: path,
+                x0: 0.5,
+                y0: 0.5,
+                x1: xOne,
+                y1: yOne,
+                line: {
+                    color: 'black',
+                    width: 6
+                }
+            }],
             xaxis: {zeroline:false, 
                 showticklabels:false,
                 showgrid: false, 
@@ -184,7 +230,7 @@ function getDemoGraphic(id) {
         };
 
         // create the indicator plot
-        Plotly.newPlot("gauge", [data3, center], layout3); 
+        Plotly.newPlot("gauge", data3, layout3); 
     });
 
     
