@@ -45,12 +45,7 @@ function getPlots(id) {
         var layout1 = {
             title: "Prominent Operational Taxonomic Units",
             yaxis: {},
-            margin: {
-                l: 100,
-                r: 75,
-                t: 100,
-                b: 25
-            }
+            margin: { l: 100, r: 75, t: 100, b: 25 }
         };
 
         // create the bar plot
@@ -88,6 +83,7 @@ function getPlots(id) {
             yaxis: { title: "Frequency" },
             height: 500,
             width: 1200,
+            margin: { l: 0, r: 0, t: 0, b: 0 },
             showlegend: false
         };
 
@@ -115,55 +111,22 @@ function getDemoGraphic(id) {
         });
 
         ////////// pie with needle //////////////
+                
+        // // Tied to have a center dot to make pointer look nicer
+        // var center = {
+        //     type: "scatter", 
+        //     x: [0],
+        //     y: [0],
+        //     marker :{
+        //         size: 20,
+        //         color: "black"
+        //     },
+        //     showlegdend: false,
+        //     hoverinfo: "skip"
+        // };
+
         var washFrequency = selectedSample2.wfreq;
         //console.log(`Wash Frequency: ${washFrequency}`);
-
-        switch (washFrequency) {
-            case 0:
-                var xOne= 0.28;
-                var yOne= 0.34;
-                break;
-            case 1:
-                var xOne= 0.20;
-                var yOne= 0.46;
-                break;
-            case 2:  
-                var xOne= 0.22;
-                var yOne= 0.59;
-                break;
-            case 3:
-                var xOne= 0.34;
-                var yOne= 0.70;
-                break; 
-            case 4:
-                var xOne= 0.50;
-                var yOne= 0.74;
-                break;
-            case 5:
-                var xOne= 0.66;
-                var yOne= 0.70;
-                break; 
-            case 6:
-                var xOne= 0.79;
-                var yOne =0.59;
-                break; 
-            case 7:
-                var xOne= 0.80;
-                var yOne= 0.46;
-                break; 
-            case 8:
-                var xOne= 0.73;
-                var yOne= 0.34;
-                break; 
-            case 9:
-                var xOne= 0.59;
-                var yOne= 0.27;
-                break;
-            default: 
-                var xOne = 0.41;
-                var yOne= 0.27;
-                break;
-        };
 
         var data3 = [{
             type: "pie",
@@ -179,35 +142,44 @@ function getDemoGraphic(id) {
             marker: { 
                 colors: ["#ffd300", "#d21404", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
                 labels: ["NA","0", "1", "2", "3","4","5","6","7","8","9"],
-                hoverinfo: "skip"
+                hoverinfo: "skip" 
             },
             title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
                     font: { size: 18} },
             
         }];
-              
-        // // Tied to have a center dot to make pointer look nicer
-        // var center = {
-        //     type: "scatter", 
-        //     x: [0],
-        //     y: [0],
-        //     marker :{
-        //         size: 20,
-        //         color: "black"
-        //     },
-        //     showlegdend: false,
-        //     hoverinfo: "skip"
-        // };
+        
+        // Set (x1,y1) for a line to point to possible cases of weekly wash frequency
+        // See shapes in layout3 for variable useage
+        switch (washFrequency) {
+            case 0:
+                var xOne = 0.28; var yOne = 0.34; break;
+            case 1:
+                var xOne = 0.20; var yOne = 0.46; break;
+            case 2:  
+                var xOne = 0.22; var yOne = 0.59; break;
+            case 3:
+                var xOne = 0.34; var yOne = 0.70; break; 
+            case 4:
+                var xOne = 0.50; var yOne = 0.74; break;
+            case 5:
+                var xOne = 0.66; var yOne = 0.70; break; 
+            case 6:
+                var xOne = 0.79; var yOne = 0.59; break; 
+            case 7:
+                var xOne = 0.80; var yOne = 0.46; break; 
+            case 8:
+                var xOne = 0.73; var yOne = 0.34; break; 
+            case 9:
+                var xOne = 0.59; var yOne = 0.27; break;
+            default: 
+                var xOne = 0.41; var yOne = 0.27; break;
+        };
 
         var layout3 = {
             width: 400,
             height: 500,
-            margin: {
-                t: 0,
-                r: 0,
-                l: 5,
-                b: 0
-            },
+            margin: { t: 0, r: 0, l: 5, b: 0 },
             shapes:[{
                 type: 'line',
                 //path: path,
@@ -226,7 +198,7 @@ function getDemoGraphic(id) {
                 showgrid: false, 
                 range: [-1, 1],
                 fixedrange: true
-              },
+            },
             yaxis: {
                 zeroline:false, 
                 showticklabels:false,
