@@ -88,7 +88,7 @@ function getPlots(id) {
             yaxis: { title: "Frequency" },
             height: 500,
             width: 1200,
-            showlegend:false
+            showlegend: false
         };
 
         // create the bar plot
@@ -97,7 +97,7 @@ function getPlots(id) {
 }
 
 function getDemoGraphic(id) {
-    // Demographic data
+    // Demographic data and Gauge plot
     d3.json("./Resources/samples.json").then((data) => {
         // Filter on selected id
         var selectedSample2 = data.metadata.filter(item => item.id.toString() === id)[0];
@@ -114,55 +114,50 @@ function getDemoGraphic(id) {
                 .text(`${idInfo[0].toUpperCase()} : ${idInfo[1]} \n`);
         });
 
-        ////////// gague //////////////
-
+        ////////// pie with needle //////////////
         var washFrequency = selectedSample2.wfreq;
         console.log(`Wash Frequency: ${washFrequency}`);
 
         var data3 = [{
-            domain: { x: [0, 1], y: [0, 1] },
-            value: washFrequency,
+            domain: { x: [-1, 1], y: [0, 1] },
+            type: "pie",
+            showlegend: false,
+            hole: 0.5,
+            rotation: 0,
+            direction: "clockwise",
+            textinfo: "text",
+            textposition: "inside",
+            values: [180, 180/10, 18,18,18,18,18,18,18,18,18],
+            text: ["", "0","1","2","3","4","5","6","7","8","9+"],
+            marker: { 
+                colors: ["#fafafa", "red", "#a0d080", "#90c070", "#80b060", "#70a050", "#609040", "#508030", "#407030", "#306010", "#203000"],
+                labels: ["","0", "1", "2", "3","4","5","6","7","8","9+"],
+                hoverinfo: "label"
+            },
             title: {text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
                     font: { size: 18} },
-            type: "indicator",
-            mode: "gauge+number",
-            delta: {},
-            gauge: {
-                axis: { range: [0, 9], tickwidth: 1, tickcolor: "#fafafa" },
-                bar: {color: '65fe08'},
-                bgcolor: "white",
-                bordercolor: "transparent",
-                steps: [
-                    { range: [0, 1], color: "#a0d080" },
-                    { range: [1, 2], color: "#90c070" },
-                    { range: [2, 3], color: "#80b060" },
-                    { range: [3, 4], color: "#70a050" },
-                    { range: [4, 5], color: "#609040" },
-                    { range: [5, 6], color: "#508030" },
-                    { range: [6, 7], color: "#407030" },
-                    { range: [7, 8], color: "#306010" },
-                    { range: [8, 9], color: "#203000" }
-                ]
-            }
+            
         }];
         var layout3 = {
-            width: 400,
-            height: 500,
-            margin: {
-                t: 0,
-                r: 0,
-                l: 0,
-                b: 0
-            },
+            shapes:[{
+                type: 'path',
+                path: path,
+                fillcolor: '#850000',
+                line: {color: '#850000'}
+            }],
+            xaxis: {},
+            yaxis: {},
             font: {
                 color: "#203000",
                 family: "Arial"
             }
         };
 
-        // create the bar plot
-        Plotly.newPlot("gauge", data3, layout3);
+        // create the indicator plot
+        Plotly.newPlot("gauge", [data3, dot], layout3); 
     });
+
+    
 }
 
 
